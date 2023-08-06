@@ -5,7 +5,7 @@ import 'platform/platform.dart';
 
 enum PressType {
   longPress,
-  singleClick,
+  singleTap,
 }
 
 enum PreferredPosition {
@@ -51,6 +51,7 @@ class CustomPopupMenu extends StatefulWidget {
     this.position,
     this.menuOnChange,
     this.enablePassEvent = true,
+    this.menuIsOpen = false,
   }){
     controller??CustomPopupMenuController();
   }
@@ -67,6 +68,7 @@ class CustomPopupMenu extends StatefulWidget {
   final Widget Function() menuBuilder;
   final PreferredPosition? position;
   final void Function(bool)? menuOnChange;
+  late final bool menuIsOpen;
 
   /// Pass tap event to the widgets below the mask.
   /// It only works when [barrierColor] is transparent.
@@ -203,8 +205,10 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
     bool menuIsShowing = _controller?.menuIsShowing ?? false;
     widget.menuOnChange?.call(menuIsShowing);
     if (menuIsShowing) {
+      widget.menuIsOpen = true;
       _showMenu();
     } else {
+      widget.menuIsOpen = false;
       _hideMenu();
     }
 
@@ -246,7 +250,7 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
         highlightColor: Colors.transparent,
         child: widget.child,
         onTap: () {
-          if (widget.pressType == PressType.singleClick && _canResponse) {
+          if (widget.pressType == PressType.singleTap && _canResponse) {
             _controller?.showMenu();
           }
         },
