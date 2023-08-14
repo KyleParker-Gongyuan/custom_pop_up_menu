@@ -51,7 +51,7 @@ class QuickPopUpMenu extends StatelessWidget {
       controller: menuController,
       barrierColor: Colors.transparent,
       showArrow: showArrow??false,
-      pressType: pressType??PressType.singleClick,
+      pressType: pressType??PressType.singleTap,
       verticalMargin: 0,
     );
   }
