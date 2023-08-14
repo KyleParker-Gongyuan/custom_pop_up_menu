@@ -6,6 +6,7 @@ import 'platform/platform.dart';
 enum PressType {
   longPress,
   singleTap,
+  doubleTap,
 }
 
 enum PreferredPosition {
@@ -68,7 +69,8 @@ class CustomPopupMenu extends StatefulWidget {
   final Widget Function() menuBuilder;
   final PreferredPosition? position;
   final void Function(bool)? menuOnChange;
-  late final bool menuIsOpen;
+  final void Function(bool)? menuIsOpen;
+  
 
   /// Pass tap event to the widgets below the mask.
   /// It only works when [barrierColor] is transparent.
