@@ -52,7 +52,7 @@ class CustomPopupMenu extends StatefulWidget {
     this.position,
     this.menuOnChange,
     this.enablePassEvent = true,
-    this.menuIsOpen = false,
+    //this.menuIsOpen = false,
   }){
     controller??CustomPopupMenuController();
   }
@@ -69,7 +69,7 @@ class CustomPopupMenu extends StatefulWidget {
   final Widget Function() menuBuilder;
   final PreferredPosition? position;
   final void Function(bool)? menuOnChange;
-  final void Function(bool)? menuIsOpen;
+  //final void Function(bool)? menuIsOpen;
   
 
   /// Pass tap event to the widgets below the mask.
@@ -207,10 +207,10 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
     bool menuIsShowing = _controller?.menuIsShowing ?? false;
     widget.menuOnChange?.call(menuIsShowing);
     if (menuIsShowing) {
-      widget.menuIsOpen = true;
+      //widget.menuIsOpen = true;
       _showMenu();
     } else {
-      widget.menuIsOpen = false;
+      //widget.menuIsOpen = false;
       _hideMenu();
     }
 
